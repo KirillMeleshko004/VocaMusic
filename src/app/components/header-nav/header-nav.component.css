@@ -1,0 +1,28 @@
+:host {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: color 0.4s, filter 0.2s;
+}
+
+a:hover {
+  color: #ffb366;
+}
+
+a:active {
+  filter: brightness(90%);
+}
