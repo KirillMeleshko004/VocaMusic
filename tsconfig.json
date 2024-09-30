@@ -22,7 +22,8 @@
     "lib": ["ES2022", "dom"],
     "baseUrl": "./src",
     "paths": {
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@models/*": ["utils/models/*"]
     }
   },
   "angularCompilerOptions": {

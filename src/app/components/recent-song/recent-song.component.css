@@ -1,0 +1,24 @@
+:host {
+  max-width: 100%;
+  max-height: 105px;
+  height: 105px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+:host:not(:first-child) {
+  margin-top: 10px;
+}
+
+.recent-song-img-wrapper {
+  width: 50%;
+  height: auto;
+}
+
+.recent-song-img {
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
