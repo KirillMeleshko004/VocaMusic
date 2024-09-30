@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,4 +8,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './logo.component.html',
   styleUrl: './logo.component.css',
 })
-export class LogoComponent {}
+export class LogoComponent {
+  @Input()
+  isDark = false;
+}

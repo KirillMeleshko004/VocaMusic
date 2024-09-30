@@ -1,7 +1,7 @@
 <ul>
   @for (link of links; track $index) {
   <li class="link-wrapper">
-    <a [routerLink]="link.URI">{{ link.title }}</a>
+    <a app-link [routerLink]="link.URI">{{ link.title }}</a>
   </li>
   }
 </ul>
