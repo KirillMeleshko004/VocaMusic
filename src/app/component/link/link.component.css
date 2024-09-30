@@ -1,0 +1,14 @@
+:host {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: color 0.4s, filter 0.2s;
+}
+
+:host:hover {
+  color: #ffb366;
+}
+
+:host :active {
+  filter: brightness(90%);
+}

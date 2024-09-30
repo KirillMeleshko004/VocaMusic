@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+.logo {
+  max-height: 25px;
+}
+
 .header-filler {
   flex-grow: 1;
 }
