@@ -1,0 +1,52 @@
+:host {
+  display: flex;
+  max-height: 600px;
+  height: 600px;
+  min-height: 600px;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.title {
+  font-size: 25px;
+  color: #000;
+}
+
+.pv-wrapper {
+  max-height: 550px;
+  height: 550px;
+  width: 100%;
+  max-width: 1000px;
+  background-color: #1c0c31;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  padding: 20px;
+  gap: 40px;
+  border-radius: 10px;
+}
+
+.recent-songs-wrapper {
+  min-width: 280px;
+  width: 30%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.recents-songs {
+  list-style: none;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+hr {
+  border: 1px solid #fff;
+  margin-right: 10px;
+}

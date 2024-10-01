@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LogoComponent } from '../logo/logo.component';
-import { LinkComponent } from 'app/component/link/link.component';
+import { LinkComponent } from 'app/components/link/link.component';
 
 @Component({
   selector: 'footer[app-footer]',

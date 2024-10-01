@@ -1,1 +1,25 @@
-<p>recent-songs works!</p>
+<h2 class="title">Recent songs</h2>
+<div class="pv-wrapper">
+  <app-pv-player [currentSong]="currentSong" />
+  <aside class="recent-songs-wrapper">
+    <ul class="recents-songs">
+      @for (song of songs; track song.id) { @if($last) {
+      <li
+        app-recent-song
+        class="recent-song-wrapper"
+        [song]="song"
+        (onClick)="setCurrent($event)"
+      ></li>
+      } @else {
+      <li
+        app-recent-song
+        class="recent-song-wrapper"
+        [song]="song"
+        (onClick)="setCurrent($event)"
+      ></li>
+      <hr />
+      } }
+    </ul>
+    <button app-button (click)="loadMore()" type="button">Load more</button>
+  </aside>
+</div>

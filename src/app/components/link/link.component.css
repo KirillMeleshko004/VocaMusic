@@ -9,6 +9,6 @@
   color: #ffb366;
 }
 
-:host :active {
+:host:active {
   filter: brightness(90%);
 }
