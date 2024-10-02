@@ -1,0 +1,19 @@
+<button class="paging-btn" app-button [disabled]="currentPage === 1">
+  First
+</button>
+<button class="paging-btn" app-button [disabled]="currentPage === 1">
+  Previous
+</button>
+<div class="prev-placeholder">...</div>
+@for (page of pageNumers; track $index) {
+<button
+  class="page-btn"
+  [class.current]="currentPage - 1 === $index"
+  app-button
+>
+  {{ page + 1 }}
+</button>
+}
+<div class="next-placeholder">...</div>
+<button class="paging-btn" app-button>Next</button>
+<button class="paging-btn" app-button>Last</button>

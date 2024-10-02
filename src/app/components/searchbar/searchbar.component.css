@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+}
+
+input {
+  height: 30px;
+  font-size: 16px;
+}
+
+button {
+  height: 30px;
+  font-size: 16px;
+  padding: 5px;
+}

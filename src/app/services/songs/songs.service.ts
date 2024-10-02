@@ -5,6 +5,7 @@ import { SongStatus } from 'utils/enums/songs/songStatus';
 import { SongType } from 'utils/enums/songs/songType';
 import { SongResult } from './songResult';
 import { SongForPv } from '@models/songForPv';
+import { SongMinInfo } from '@models/songMinInfo';
 
 @Injectable({
   providedIn: 'root',
@@ -56,6 +57,45 @@ export class SongsService {
       mainImage: song.mainPicture.urlOriginal,
       thumbImg: song.mainPicture.urlThumb,
       ytPvEmbedUrl: `https://www.youtube.com/embed/${ytPv.pvId}`,
+    };
+
+    return mapedSong;
+  }
+
+  getMinSongs(
+    orderBy: string,
+    query: string,
+    page: number,
+    pageSize: number
+  ): Observable<Array<SongMinInfo>> {
+    return this.server
+      .get<{ items: SongResult[]; totalCount: number | undefined }>(
+        'https://vocadb.net/api/songs',
+        {
+          headers: {
+            Accept: 'application/json',
+          },
+          params: {
+            sort: orderBy,
+            getTotalCount: true,
+            start: page,
+            maxResults: pageSize,
+            query: query,
+            fields: 'MainPicture',
+          },
+        }
+      )
+      .pipe(
+        map((data) => {
+          return data.items.map(this.extractThumbImage);
+        })
+      );
+  }
+
+  extractThumbImage(song: SongResult): SongMinInfo {
+    const mapedSong: SongMinInfo = {
+      ...song,
+      thumbImg: song.mainPicture.urlThumb,
     };
 
     return mapedSong;

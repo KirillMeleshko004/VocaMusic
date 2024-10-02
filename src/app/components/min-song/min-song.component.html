@@ -1,0 +1,12 @@
+<div class="thumb-img-wrapper">
+  <img
+    class="thumb-img"
+    [src]="song.thumbImg"
+    alt="song thumbnail"
+    onerror="src='placeholder.png'"
+  />
+</div>
+<div class="song-info-wrapper">
+  <p>{{ song.name }}</p>
+  <p>{{ song.artistString }}</p>
+</div>

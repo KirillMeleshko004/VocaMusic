@@ -15,4 +15,5 @@ export interface SongResult {
     urlThumb: string;
   };
   ytPvEmbedUrl: string;
+  totalScore: number;
 }

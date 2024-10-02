@@ -4,16 +4,7 @@ import { ButtonComponent } from '../button/button.component';
 import { PvPlayerComponent } from '../pv-player/pv-player.component';
 import { SongsService } from 'app/services/songs/songs.service';
 import { SongForPv } from '@models/songForPv';
-import {
-  BehaviorSubject,
-  concatMap,
-  first,
-  Observable,
-  of,
-  scan,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { BehaviorSubject, Observable, scan, switchMap, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -24,7 +15,7 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './recent-songs.component.html',
   styleUrl: './recent-songs.component.css',
 })
-export class RecentSongsComponent implements OnInit, OnDestroy {
+export class RecentSongsComponent implements OnInit {
   offset = new BehaviorSubject(0);
   songs = new Observable<SongForPv[]>();
   currentSong: SongForPv | undefined;
@@ -49,8 +40,6 @@ export class RecentSongsComponent implements OnInit, OnDestroy {
       })
     );
   }
-
-  ngOnDestroy(): void {}
 
   setCurrent(e: SongForPv) {
     this.currentSong = e;

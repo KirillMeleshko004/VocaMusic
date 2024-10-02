@@ -1,1 +1,21 @@
-<main>Songs page</main>
+<main>
+  <section class="search-block">
+    <div class="search-header">
+      <app-searchbar placeholder="Type something..." />
+      <select app-select></select>
+    </div>
+    <div class="pages-wrapper">
+      <app-song-pages [currentPage]="(page | async)!" [totalItems]="100" />
+    </div>
+    <div class="song-list-wrapper">
+      <ul class="song-list">
+        @for (song of songs | async; track song.id;) {
+        <li app-min-song [song]="song" [isOdd]="$odd"></li>
+        }
+      </ul>
+    </div>
+    <div class="pages-wrapper">
+      <app-song-pages [currentPage]="(page | async)!" [totalItems]="100" />
+    </div>
+  </section>
+</main>
