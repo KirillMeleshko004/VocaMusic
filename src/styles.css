@@ -41,3 +41,7 @@ app-root {
 ::-webkit-scrollbar-thumb:hover {
   background: #d0c5b9;
 }
+
+.invisible {
+  display: none !important;
+}

@@ -7,10 +7,10 @@
   border: 0;
 }
 
-:host:hover {
+:host:hover:not([disabled]) {
   background-color: #ffb366;
 }
 
-:host:active {
+:host:active:not([disabled]) {
   filter: brightness(90%);
 }

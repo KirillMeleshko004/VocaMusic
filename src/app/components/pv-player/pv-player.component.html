@@ -1,13 +1,29 @@
-<div class="song-image-wrapper">
-  <img [src]="currentSong.image" class="song-image" alt="selected song" />
-  <button type="button" class="play-btn">
+<div class="song-pv-wrapper">
+  <img
+    [src]="loaded ? currentSong?.mainImage : placeholder"
+    class="pv-image"
+    [class.invisible]="isPlaying"
+    alt="selected song"
+  />
+  <button
+    type="button"
+    class="play-btn"
+    [class.invisible]="isPlaying || !loaded"
+    title="play"
+    (click)="playPv()"
+  >
     <img class="btn-img" src="playBtn.svg" />
   </button>
-</div>
-<div class="player-placeholder">
-  <iframe width="100%" height="100%"> </iframe>
+  <iframe
+    class="pv-player"
+    [class.invisible]="!isPlaying"
+    title="pv player"
+    [src]="safePvURI"
+    allowfullscreen
+  >
+  </iframe>
 </div>
 <div class="song-info-wrapper">
-  <p class="song-title">{{ currentSong.name }}</p>
-  <p class="song-artist">{{ currentSong.artistString }}</p>
+  <p class="song-title">{{ currentSong?.name }}</p>
+  <p class="song-artist">{{ currentSong?.artistString }}</p>
 </div>
