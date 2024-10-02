@@ -1,4 +1,4 @@
-export enum SongTypes {
+export enum SongType {
   Unspecified,
   Original,
   Remaster,

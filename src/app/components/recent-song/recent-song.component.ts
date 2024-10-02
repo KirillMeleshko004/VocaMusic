@@ -5,7 +5,8 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Song } from '@models/song';
+import { SongForPv } from '@models/songForPv';
+
 @Component({
   selector: 'li[app-recent-song]',
   standalone: true,
@@ -15,10 +16,13 @@ import { Song } from '@models/song';
 })
 export class RecentSongComponent {
   @Input({ required: true })
-  song: Song = null!;
+  song: SongForPv = null!;
+
+  @Input()
+  last = false;
 
   @Output()
-  onClick = new EventEmitter<Song>();
+  onClick = new EventEmitter<SongForPv>();
 
   @HostListener('click')
   songClick() {

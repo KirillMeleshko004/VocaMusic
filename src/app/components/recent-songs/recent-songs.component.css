@@ -27,11 +27,13 @@
   padding: 20px;
   gap: 40px;
   border-radius: 10px;
+  flex: 1;
 }
 
 .recent-songs-wrapper {
-  min-width: 280px;
-  width: 30%;
+  min-width: 270px;
+  width: 25%;
+  max-width: 25%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -42,11 +44,19 @@
 .recents-songs {
   list-style: none;
   height: 100%;
-  max-height: 100%;
+  max-height: 460px;
   overflow-y: scroll;
+  min-width: 100%;
+  max-width: 100%;
 }
 
-hr {
-  border: 1px solid #fff;
-  margin-right: 10px;
+.load-btn {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1290px) {
+  .recent-songs-wrapper {
+    display: none;
+  }
 }

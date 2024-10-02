@@ -1,19 +1,26 @@
 :host {
   max-width: 100%;
+  cursor: pointer;
+  transition: filter 0.4s;
+}
+
+:host:hover {
+  filter: brightness(90%);
+}
+
+.recent-song-wrapper {
+  margin-right: 10px;
   max-height: 105px;
   height: 105px;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: 10px;
-}
-
-:host:not(:first-child) {
-  margin-top: 10px;
 }
 
 .recent-song-img-wrapper {
   width: 50%;
+  min-width: 50%;
+  max-width: 60%;
   height: auto;
 }
 
@@ -21,4 +28,22 @@
   height: auto;
   max-width: 100%;
   object-fit: contain;
+}
+
+.recent-song-info {
+  max-height: 100%;
+  max-width: 40%;
+}
+
+.recent-song-title,
+.recent-song-artist {
+  max-height: 50%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+hr {
+  margin: 5px 10px 5px 0px;
+  border: 1px solid #fff;
 }
