@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  gap: 2px;
+}
+
+button,
+.prev-placeholder,
+.next-placeholder {
+  border: 1px solid lightslategray;
+  height: 30px;
+}
+
+.current {
+  background-color: blanchedalmond;
+}
+
+.paging-btn {
+  width: 100px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+}
+
+.prev-placeholder,
+.next-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  user-select: none;
+}
+
+.page-btn {
+  display: flex;
+  align-items: center;
+  width: min-content;
+}

@@ -3,7 +3,7 @@
   <app-pv-player [currentSong]="currentSong" />
   <aside class="recent-songs-wrapper">
     <ul class="recents-songs">
-      @for (song of songs | async; track song.id) {
+      @for (song of songs$ | async; track song.id) {
       <li
         app-recent-song
         class="recent-song-wrapper"
@@ -18,9 +18,9 @@
       app-button
       (click)="loadMore()"
       type="button"
-      [disabled]="isLoading"
+      [disabled]="isLoading$ | async"
     >
-      {{ isLoading ? "Loading..." : "Load more" }}
+      {{ (isLoading$ | async) ? "Loading..." : "Load more" }}
     </button>
   </aside>
 </div>

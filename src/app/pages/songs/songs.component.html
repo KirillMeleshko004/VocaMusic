@@ -1,1 +1,41 @@
-<main>Songs page</main>
+<main>
+  <section class="search-block">
+    <div class="search-header">
+      <form
+        app-searchbar
+        placeholder="Type something..."
+        (queryChanged)="onQueryChangde($event)"
+      ></form>
+      <select app-select (change)="onSelect($event)"></select>
+    </div>
+    <div class="pages-wrapper">
+      <app-song-pages
+        [currentPage]="(params$ | async)!.page"
+        [totalPages]="totalPages"
+        [isLoading]="(loadings$ | async)!"
+        (pageChanged)="pageChanged($event)"
+      />
+      <div class="total-stats-wrapper">
+        <p class="total-stats">
+          Showing {{ pageSize }} items of {{ totalCount }}
+        </p>
+      </div>
+    </div>
+    <div class="song-list-wrapper">
+      <ul class="song-list">
+        @for (song of songs$ | async; track song.id;) {
+        <li app-min-song [song]="song" [isOdd]="$odd"></li>
+        }
+      </ul>
+      <div class="screen-loader" [class.loading]="loadings$ | async"></div>
+    </div>
+    <div class="pages-wrapper">
+      <app-song-pages
+        [currentPage]="(params$ | async)!.page"
+        [totalPages]="totalPages"
+        [isLoading]="(loadings$ | async)!"
+        (pageChanged)="pageChanged($event)"
+      />
+    </div>
+  </section>
+</main>
