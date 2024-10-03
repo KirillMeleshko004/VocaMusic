@@ -21,3 +21,14 @@
 .song-list {
   list-style: none;
 }
+
+.pages-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.total-stats-wrapper {
+  display: flex;
+  align-items: center;
+}

@@ -35,5 +35,5 @@ button,
 .page-btn {
   display: flex;
   align-items: center;
-  width: 30px;
+  width: min-content;
 }

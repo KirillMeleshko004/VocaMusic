@@ -1,12 +1,21 @@
 :host {
-  padding: 10px;
   width: 100%;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
 }
 
 :host.odd {
   background-color: lightgray;
+}
+
+:host:last-child hr {
+  display: none;
+}
+
+.info-wrapper {
+  padding: 10px;
+  display: flex;
+  gap: 20px;
 }
 
 .thumb-img-wrapper {

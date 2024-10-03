@@ -5,7 +5,16 @@
       <select app-select></select>
     </div>
     <div class="pages-wrapper">
-      <app-song-pages [currentPage]="(page | async)!" [totalItems]="100" />
+      <app-song-pages
+        [currentPage]="(page | async)!"
+        [totalPages]="totalPages"
+        (pageChanged)="pageChanged($event)"
+      />
+      <div class="total-stats-wrapper">
+        <p class="total-stats">
+          Showing {{ pageSize }} items of {{ totalCount }}
+        </p>
+      </div>
     </div>
     <div class="song-list-wrapper">
       <ul class="song-list">
@@ -15,7 +24,11 @@
       </ul>
     </div>
     <div class="pages-wrapper">
-      <app-song-pages [currentPage]="(page | async)!" [totalItems]="100" />
+      <app-song-pages
+        [currentPage]="(page | async)!"
+        [totalPages]="totalPages"
+        (pageChanged)="pageChanged($event)"
+      />
     </div>
   </section>
 </main>

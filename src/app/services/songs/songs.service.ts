@@ -6,6 +6,7 @@ import { SongType } from 'utils/enums/songs/songType';
 import { SongResult } from './songResult';
 import { SongForPv } from '@models/songForPv';
 import { SongMinInfo } from '@models/songMinInfo';
+import { IMAGE_PLACEHOLDER } from '@constants/defaults';
 
 @Injectable({
   providedIn: 'root',
@@ -67,18 +68,18 @@ export class SongsService {
     query: string,
     page: number,
     pageSize: number
-  ): Observable<Array<SongMinInfo>> {
+  ): Observable<{ songs: SongMinInfo[]; totalCount: number }> {
     return this.server
-      .get<{ items: SongResult[]; totalCount: number | undefined }>(
+      .get<{ items: SongResult[]; totalCount: number }>(
         'https://vocadb.net/api/songs',
         {
           headers: {
             Accept: 'application/json',
           },
           params: {
-            sort: orderBy,
+            sort: 'RatingScore',
             getTotalCount: true,
-            start: page,
+            start: page * pageSize,
             maxResults: pageSize,
             query: query,
             fields: 'MainPicture',
@@ -87,7 +88,11 @@ export class SongsService {
       )
       .pipe(
         map((data) => {
-          return data.items.map(this.extractThumbImage);
+          return {
+            songs: data.items.map(this.extractThumbImage),
+
+            totalCount: data.totalCount,
+          };
         })
       );
   }
@@ -95,7 +100,7 @@ export class SongsService {
   extractThumbImage(song: SongResult): SongMinInfo {
     const mapedSong: SongMinInfo = {
       ...song,
-      thumbImg: song.mainPicture.urlThumb,
+      thumbImg: song.mainPicture?.urlThumb ?? IMAGE_PLACEHOLDER,
     };
 
     return mapedSong;

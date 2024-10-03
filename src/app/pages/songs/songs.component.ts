@@ -7,7 +7,7 @@ import { SearchbarComponent } from 'app/components/searchbar/searchbar.component
 import { SelectComponent } from 'app/components/select/select.component';
 import { SongPagesComponent } from 'app/components/song-pages/song-pages.component';
 import { SongsService } from 'app/services/songs/songs.service';
-import { BehaviorSubject, Observable, scan, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, scan, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-songs',
@@ -27,7 +27,9 @@ export class SongsComponent implements OnInit {
   page = new BehaviorSubject(1);
   songs = new Observable<SongMinInfo[]>();
   isLoading = true;
-  pageSize = 15;
+  pageSize = 10;
+  totalCount = 0;
+  totalPages = 0;
 
   constructor(private songsService: SongsService) {}
 
@@ -41,9 +43,15 @@ export class SongsComponent implements OnInit {
           this.pageSize
         );
       }),
-      scan((acc: SongMinInfo[], value) => {
-        return [...acc, ...value];
-      }, [])
+      map((data) => {
+        this.totalCount = data.totalCount;
+        this.totalPages = Math.ceil(this.totalCount / this.pageSize);
+        return data.songs;
+      })
     );
+  }
+
+  pageChanged(pageNumber: number) {
+    this.page.next(pageNumber);
   }
 }
