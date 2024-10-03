@@ -1,2 +1,7 @@
-<input [placeholder]="placeholder" type="text" />
-<button app-button type="button">Clear</button>
+<input
+  [placeholder]="placeholder"
+  type="text"
+  [(ngModel)]="inputValue"
+  (ngModelChange)="onChange()"
+/>
+<button app-button type="button" (click)="onClear()">Clear</button>

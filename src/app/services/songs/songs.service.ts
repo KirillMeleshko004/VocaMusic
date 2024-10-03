@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { SongStatus } from 'utils/enums/songs/songStatus';
 import { SongType } from 'utils/enums/songs/songType';
 import { SongResult } from './songResult';
 import { SongForPv } from '@models/songForPv';
 import { SongMinInfo } from '@models/songMinInfo';
 import { IMAGE_PLACEHOLDER } from '@constants/defaults';
+import { QueryArgs } from '@models/queryArgs';
 
 @Injectable({
   providedIn: 'root',
@@ -64,10 +65,7 @@ export class SongsService {
   }
 
   getMinSongs(
-    orderBy: string,
-    query: string,
-    page: number,
-    pageSize: number
+    params: QueryArgs
   ): Observable<{ songs: SongMinInfo[]; totalCount: number }> {
     return this.server
       .get<{ items: SongResult[]; totalCount: number }>(
@@ -77,12 +75,13 @@ export class SongsService {
             Accept: 'application/json',
           },
           params: {
-            sort: 'RatingScore',
+            sort: params.orderBy.replace(/\s+/g, ''),
             getTotalCount: true,
-            start: page * pageSize,
-            maxResults: pageSize,
-            query: query,
+            start: (params.page - 1) * params.pageSize,
+            maxResults: params.pageSize,
+            query: params.query,
             fields: 'MainPicture',
+            nameMatchMode: 'Auto',
           },
         }
       )
@@ -93,7 +92,16 @@ export class SongsService {
 
             totalCount: data.totalCount,
           };
-        })
+        }),
+        catchError(
+          (
+            err,
+            caught: Observable<{ songs: SongMinInfo[]; totalCount: number }>
+          ) => {
+            console.log(err);
+            return of({ songs: new Array<SongMinInfo>(), totalCount: 0 });
+          }
+        )
       );
   }
 

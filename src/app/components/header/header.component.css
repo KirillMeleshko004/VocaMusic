@@ -9,6 +9,7 @@
   gap: 40px;
   padding: 10px 150px;
   box-sizing: border-box;
+  z-index: 10;
 }
 
 .logo {
@@ -21,4 +22,29 @@
 
 .text {
   font-size: 24px;
+}
+
+.loader-track {
+  position: absolute;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.493);
+  border-radius: 30px;
+  width: 120px;
+  height: 8px;
+  bottom: -8px;
+  left: 0;
+  display: none;
+}
+
+.loading {
+  display: block;
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  from {
+    left: -10vw;
+  }
+  to {
+    left: 105vw;
+  }
 }

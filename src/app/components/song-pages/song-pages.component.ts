@@ -7,11 +7,12 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-song-pages',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, AsyncPipe],
   templateUrl: './song-pages.component.html',
   styleUrl: './song-pages.component.css',
 })
@@ -23,6 +24,9 @@ export class SongPagesComponent implements OnChanges {
   currentPage = 0;
   @Input({ required: true })
   totalPages = 0;
+
+  @Input({ required: true })
+  isLoading: boolean = false;
 
   @Output() pageChanged = new EventEmitter<number>();
 
