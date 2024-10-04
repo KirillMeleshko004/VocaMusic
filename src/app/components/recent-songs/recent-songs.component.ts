@@ -39,10 +39,12 @@ export class RecentSongsComponent implements OnInit {
         return [...acc, ...value];
       }, []),
       tap((songs) => {
-        this.loadings.setLoadingOff();
-        if (!this.currentSong) {
-          this.currentSong = songs[0];
-        }
+        setTimeout(() => {
+          this.loadings.setLoadingOff();
+          if (!this.currentSong) {
+            this.currentSong = songs[0];
+          }
+        });
       })
     );
   }

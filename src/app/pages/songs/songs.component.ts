@@ -57,15 +57,18 @@ export class SongsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadings.setLoadingOn();
+
     this.songs$ = this.params$.pipe(
       switchMap((params) => {
         return this.songsService.getMinSongs(params);
       }),
       map((data) => {
-        this.totalCount = data.totalCount;
-        this.totalPages = Math.ceil(this.totalCount / this.pageSize);
+        setTimeout(() => {
+          this.totalCount = data.totalCount;
+          this.totalPages = Math.ceil(this.totalCount / this.pageSize);
 
-        this.loadings.setLoadingOff();
+          this.loadings.setLoadingOff();
+        });
         return data.songs;
       })
     );

@@ -1,10 +1,14 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
+  afterNextRender,
   Component,
   ElementRef,
   Input,
   OnChanges,
   SimpleChanges,
   ViewChild,
+  PLATFORM_ID,
+  inject,
 } from '@angular/core';
 import { IMAGE_PLACEHOLDER } from '@constants/defaults';
 import { SongForPv } from '@models/songForPv';
@@ -26,6 +30,8 @@ export class PvPlayerComponent implements OnChanges {
 
   loaded: boolean = false;
 
+  private readonly platform = inject(PLATFORM_ID);
+
   @ViewChild('iframe') ytFrame!: ElementRef;
 
   playPv() {
@@ -33,12 +39,14 @@ export class PvPlayerComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['currentSong'] && changes['currentSong'].currentValue) {
+    if (
+      changes['currentSong'] &&
+      changes['currentSong'].currentValue &&
+      isPlatformBrowser(this.platform)
+    ) {
       this.isPlaying = false;
 
       if (this.currentSong) {
-        console.log(this.ytFrame);
-
         this.ytFrame?.nativeElement.contentWindow.location.replace(
           this.currentSong.ytPvEmbedUrl
         );
