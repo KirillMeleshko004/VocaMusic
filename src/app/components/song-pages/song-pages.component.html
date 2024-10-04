@@ -1,0 +1,55 @@
+<button
+  class="paging-btn"
+  app-button
+  [disabled]="currentPage === 1 || isLoading"
+  (click)="onPageChanged(1)"
+>
+  First
+</button>
+<button
+  class="paging-btn"
+  app-button
+  [disabled]="currentPage === 1 || isLoading"
+  (click)="onPageChanged(currentPage - 1)"
+>
+  Previous
+</button>
+<div
+  class="prev-placeholder placeholder"
+  [class.invisible]="currentPage <= maxPagesOffset + 1"
+>
+  ...
+</div>
+@for (page of pageNumers; track $index) {
+<button
+  class="page-btn"
+  [class.current]="currentPage === page"
+  app-button
+  [disabled]="isLoading"
+  (click)="onPageChanged(page)"
+>
+  {{ page }}
+</button>
+}
+<div
+  class="next-placeholder placeholder"
+  [class.invisible]="currentPage >= totalPages - maxPagesOffset"
+>
+  ...
+</div>
+<button
+  class="paging-btn"
+  app-button
+  (click)="onPageChanged(currentPage + 1)"
+  [disabled]="currentPage >= totalPages || isLoading"
+>
+  Next
+</button>
+<button
+  class="paging-btn"
+  app-button
+  (click)="onPageChanged(totalPages!)"
+  [disabled]="currentPage >= totalPages || isLoading"
+>
+  Last
+</button>

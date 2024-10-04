@@ -1,0 +1,32 @@
+<h2 class="title">Recent songs</h2>
+<div class="pv-wrapper">
+  <div class="pv-player-wrapper">
+    <app-pv-player [currentSong]="currentSong" />
+    <div class="song-info-wrapper">
+      <p class="song-title">{{ currentSong?.name }}</p>
+      <p class="song-artist">{{ currentSong?.artistString }}</p>
+    </div>
+  </div>
+  <aside class="recent-songs-wrapper">
+    <ul class="recents-songs">
+      @for (song of songs$ | async; track song.id) {
+      <li
+        app-recent-song
+        class="recent-song-wrapper"
+        [song]="song"
+        (onClick)="setCurrent($event)"
+        [last]="$last"
+      ></li>
+      }
+    </ul>
+    <button
+      class="load-btn"
+      app-button
+      (click)="loadMore()"
+      type="button"
+      [disabled]="isLoading$ | async"
+    >
+      {{ (isLoading$ | async) ? "Loading..." : "Load more" }}
+    </button>
+  </aside>
+</div>

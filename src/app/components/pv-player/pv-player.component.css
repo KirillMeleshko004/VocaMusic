@@ -1,0 +1,53 @@
+:host {
+  flex: 1;
+  max-width: 640px;
+  max-height: 459px;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.pv-image {
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.pv-player {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  border: 0;
+}
+
+.play-btn {
+  background-color: #ffffff91;
+  transition: background-color 0.4s, filter 0.2s, box-shadow 0.6s;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border: 0;
+  position: absolute;
+  max-width: 60px;
+  bottom: 5%;
+  left: 5%;
+  box-shadow: 0px 0px 20px #fff;
+}
+
+.btn-img {
+  max-width: 100%;
+}
+
+.play-btn:hover {
+  background-color: #ffb36691;
+  box-shadow: 0px 0px 20px #ffb366;
+}
+
+.play-btn:active {
+  filter: brightness(90%);
+}
+
+.player-placeholder {
+  display: none;
+}

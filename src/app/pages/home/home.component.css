@@ -1,0 +1,26 @@
+@import url("../page.css");
+
+h1 {
+  font-size: 30px;
+}
+
+.heading-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #000;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+a {
+  font-size: 20px;
+  color: #000;
+}
+
+.recent {
+  display: flex;
+  height: 500px;
+  background-color: #dbdbdb;
+  padding: 10px;
+}

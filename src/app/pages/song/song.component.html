@@ -1,0 +1,50 @@
+<main>
+  <div class="info-wrapper" [class.invisible]="loading$ | async">
+    <app-pv-player [currentSong]="song" />
+    <div class="title">
+      <h1>{{ song?.name }}</h1>
+      <span class="artist"
+        >{{ song?.artistString }} ({{ song?.songType?.toString() }})</span
+      >
+    </div>
+    <p [class.invisible]="song?.additionalNames === ''">
+      Additional names: {{ song?.additionalNames }}
+    </p>
+    @for (artist of song?.artists; track artist.id) {
+    <p>
+      {{ artist.categories }}:
+      {{ artist.name }}
+    </p>
+    }
+    <p>Publish date: {{ song?.publishDate | date }}</p>
+    <p>Song type: {{ song?.songType?.toString() }}</p>
+    <p>Duration: {{ song?.lengthSeconds! * 1000 | date : "mm:ss" }}</p>
+    <p>Rating: {{ song?.ratingScore }}</p>
+    <h2 [class.invisible]="song?.tagCategories?.length == 0" class="tags-title">
+      Tags:
+    </h2>
+    @for (cat of song?.tagCategories; track $index) {
+    <p>
+      {{ cat.category }}: @for (tag of cat.tags; track tag.id) {
+      <span class="tag-value">{{ tag.name }}</span>
+      }
+    </p>
+    }
+    <h2 [class.invisible]="song?.albums?.length == 0" class="albums-title">
+      Albums:
+    </h2>
+    <ul class="albums-list">
+      @for (album of song?.albums; track album.id) {
+      <li class="album-wrapper">
+        <div class="album">
+          <img [src]="album.imageURI" />
+          <p>{{ album.name }}{{ $last ? "" : ", " }}</p>
+        </div>
+        @if (!$last) {
+        <hr />
+        }
+      </li>
+      }
+    </ul>
+  </div>
+</main>

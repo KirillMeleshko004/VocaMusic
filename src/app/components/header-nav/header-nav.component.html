@@ -1,0 +1,7 @@
+<ul>
+  @for (link of links; track $index) {
+  <li class="link-wrapper">
+    <a app-link [routerLink]="link.URI">{{ link.title }}</a>
+  </li>
+  }
+</ul>

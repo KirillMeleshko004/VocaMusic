@@ -1,0 +1,16 @@
+<div class="info-wrapper">
+  <div class="thumb-img-wrapper">
+    <img
+      class="thumb-img"
+      [src]="song.thumbImg"
+      alt="song thumbnail"
+      onerror="src='placeholder.png'"
+    />
+  </div>
+  <div class="song-info-wrapper">
+    <a app-link routerLink="/song/{{ song.id }}" class="song-link">{{
+      song.name
+    }}</a>
+    <p>{{ song.artistString }}</p>
+  </div>
+</div>
