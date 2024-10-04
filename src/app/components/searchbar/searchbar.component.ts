@@ -29,6 +29,7 @@ export class SearchbarComponent {
   }
 
   onClear() {
+    if (this.inputValue === '') return;
     this.inputValue = '';
     this.queryChanged.emit(this.inputValue);
   }

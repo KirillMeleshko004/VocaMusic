@@ -1,11 +1,10 @@
-import { Pv } from 'utils/helperModels/pv';
-import { Tag } from 'utils/helperModels/tag';
-import { WebLink } from 'utils/helperModels/webLink';
 import { SongType } from 'utils/enums/songs/songType';
+import { WebLink } from '../helperModels/webLink';
+import { Tag } from 'utils/helperModels/tag';
 import { Album } from 'utils/helperModels/album';
 import { Artist } from 'utils/helperModels/artist';
 
-export interface SongResult {
+export interface SongFullInfo {
   id: number;
   name: string;
   additionalNames: string;
@@ -13,14 +12,15 @@ export interface SongResult {
   lengthSeconds: number;
   songType: SongType;
   artistString: string;
-  pvs: Pv[];
-  mainPicture: {
-    urlOriginal: string;
-    urlThumb: string;
-  };
+  mainImage: string;
+  thumbImg: string;
+  ytPvEmbedUrl: string;
   ratingScore: number;
-  tags: { count: number; tag: Tag }[];
-  webLinks: WebLink[];
+  tagCategories: {
+    category: string;
+    tags: Tag[];
+  }[];
   albums: Album[];
   artists: Artist[];
+  webLinks: WebLink[];
 }

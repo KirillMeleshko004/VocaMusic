@@ -1,15 +1,4 @@
 :host {
-  width: 70%;
-  min-width: 0;
-  height: 510px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.song-pv-wrapper {
   flex: 1;
   max-width: 640px;
   max-height: 459px;
@@ -28,32 +17,8 @@
 .pv-player {
   height: 100%;
   width: 100%;
-}
-
-.song-info-wrapper {
-  display: flex;
-  gap: 1%;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
   border-radius: 10px;
-  gap: 20px;
-}
-
-.song-title {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 25px;
-  max-width: 60%;
-}
-
-.song-artist {
-  font-size: 18px;
-  max-width: 39%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  border: 0;
 }
 
 .play-btn {
@@ -85,10 +50,4 @@
 
 .player-placeholder {
   display: none;
-}
-
-@media screen and (max-width: 1290px) {
-  :host {
-    width: 100%;
-  }
 }

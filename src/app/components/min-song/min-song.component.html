@@ -8,8 +8,9 @@
     />
   </div>
   <div class="song-info-wrapper">
-    <p>{{ song.name }}</p>
+    <a app-link routerLink="/song/{{ song.id }}" class="song-link">{{
+      song.name
+    }}</a>
     <p>{{ song.artistString }}</p>
   </div>
 </div>
-<hr />

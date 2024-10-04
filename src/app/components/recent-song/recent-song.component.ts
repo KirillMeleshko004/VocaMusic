@@ -6,11 +6,12 @@ import {
   Output,
 } from '@angular/core';
 import { SongForPv } from '@models/songForPv';
+import { FallbackImgDirective } from 'app/directives/fallback-img.directive';
 
 @Component({
   selector: 'li[app-recent-song]',
   standalone: true,
-  imports: [],
+  imports: [FallbackImgDirective],
   templateUrl: './recent-song.component.html',
   styleUrl: './recent-song.component.css',
 })
