@@ -1,29 +1,26 @@
-<div class="song-pv-wrapper">
-  <img
-    [src]="loaded ? currentSong?.mainImage : placeholder"
-    class="pv-image"
-    [class.invisible]="isPlaying"
-    alt="selected song"
-  />
-  <button
-    type="button"
-    class="play-btn"
-    [class.invisible]="isPlaying || !loaded"
-    title="play"
-    (click)="playPv()"
-  >
-    <img class="btn-img" src="playBtn.svg" />
-  </button>
-  <iframe
-    class="pv-player"
-    [class.invisible]="!isPlaying"
-    title="pv player"
-    [src]="safePvURI"
-    allowfullscreen
-  >
-  </iframe>
-</div>
-<div class="song-info-wrapper">
-  <p class="song-title">{{ currentSong?.name }}</p>
-  <p class="song-artist">{{ currentSong?.artistString }}</p>
-</div>
+<img
+  [src]="loaded ? currentSong?.mainImage : placeholder"
+  class="pv-image"
+  [class.invisible]="isPlaying"
+  alt="selected song"
+  appFallbackImg
+/>
+<button
+  type="button"
+  class="play-btn"
+  [class.invisible]="isPlaying || !loaded"
+  title="play"
+  (click)="playPv()"
+>
+  <img class="btn-img" src="playBtn.svg" />
+</button>
+<iframe
+  #iframe
+  class="pv-player"
+  [class.invisible]="!isPlaying"
+  title="pv player"
+  src="about:blank"
+  allowfullscreen
+>
+  <!-- [src]="safePvURI" -->
+</iframe>

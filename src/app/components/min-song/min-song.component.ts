@@ -1,11 +1,13 @@
 import { Component, HostBinding, input, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SongForPv } from '@models/songForPv';
 import { SongMinInfo } from '@models/songMinInfo';
+import { LinkComponent } from '../link/link.component';
 
 @Component({
   selector: 'li[app-min-song]',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, LinkComponent],
   templateUrl: './min-song.component.html',
   styleUrl: './min-song.component.css',
 })

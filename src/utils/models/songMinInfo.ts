@@ -4,5 +4,5 @@ export interface SongMinInfo {
   publishDate: string;
   artistString: string;
   thumbImg: string;
-  totalScore: number;
+  ratingScore: number;
 }
